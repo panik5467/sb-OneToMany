@@ -1,0 +1,28 @@
+https://www.bezkoder.com/jpa-one-to-many/
+https://github.com/bezkoder/spring-boot-one-to-many
+
+curl -H "Content-Type:application/json" localhost:8080/api/tutorials -d "{\"title\":\"tuto1\",\"version\":\"AA\"}"
+result: {"id":1,"title":"tuto1","version":"AA"}
+
+curl -XPUT -H "Content-Type:application/json" localhost:8080/api/tutorials/1 -d "{\"title\":\"tuto1\",\"version\":\"AA\"}"
+curl -XPUT -H "Content-Type:application/json" localhost:8080/api/tutorials/2 -d "{\"title\":\"tuto2\",\"version\":\"AA\"}"
+result: {"id":2,"title":"tuto2","version":"AA"}
+
+curl -H "Content-Type:application/json" localhost:8080/api/tutorials/1/comments -d "{\"content\":\"tuto1 abcdefg\",\"version\":\"AA\"}"
+result : {"id":1,"content":"tuto1 abcdefg","version":"AA","tutorial":{"id":1,"title":"tuto1","version":"AA"}}
+
+
+API Offre - Revision
+=====================
+
+/api/post?title=toto
+=> 2 x Offres-Revision(aa,ab,ac)
+
+/api/props
+=> list offre-revision
+
+/api/props/1
+=> propId=1: offre-revision
+
+/api/props/1/revs
+=> propId=1: list revision
